@@ -36,17 +36,20 @@ What is proposed:
  2. So for each input token the embedding token (E) is added to the positonal encoding (PE) and then it is passed to the first layer of the transformer
     $X = E + PE $
 3. Sinusoidal Postional Encoding Formula:
-    $$
-    \text{PE}_{(pos,\,2i)} = \sin\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)
-    $$
 
-    $$
-    \   text{PE}_{(pos,\,2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)
-    $$
+$$
+\text{PE}_{(pos,\,2i)} = \sin\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)
+$$
+
+$$
+\text{PE}_{(pos,\,2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_{\text{model}}}}\right)
+$$
 
 > small i -> division by a smaller number -> large arguement -> oscillates faster -- Important for self attention as it is able to understand the relative distances between the two adjacent words in a sentence
 
 
 # Self Attention
 
-$ Attention(Q, K, V) = softmax(\frac{Q*K^T}{})
+$$
+\text{Attention}(Q, K, V) = \text{softmax}\!\left(\frac{QK^{T}}{\sqrt{d_k}}\right)V
+$$
